@@ -42,10 +42,166 @@ Routing tables
 Packets have destination ip, vlan, (message)
 
 
+
+
 Port image:
 Disconnected
 Connected + data
 Connected + no data
+
+
+
+
+Cable length 0.25, 0.5, 1m, 2m, 5m, 10m
+Connector/port types:
+USB
+Video (hdmi etc)
+
+Port types:
+USB
+RJ45
+Power
+<port_types>
+<port>
+                <name>rj45</name>
+                <image></>
+</port>
+
+Devices:
+                <image></>
+Types: NAS< switch, UPS, gig switch, etc.
+
+Timed maintenance windows
+replugging a few things and then turing them back on.
+Tester for cables
+Big red button.
+Screw drivers or other tools?
+
+How do I read and parse an XML file in C#? - Stack Overflow
+c# json - Google Search
+
+Collisions:
+make a lit of all of the things in the scene (once, on load)
+How will collisions work for loaded files?
+
+
+<rack>
+<MaxHeight> 16</MaxHeight> //height in U
+<DeviceList>
+                                <Device>
+                                                <RackLocation>eg 16U</>
+                                                <DeviceName>Switch-01</DeviceName > - manual or automatic? Name collisions?
+                                                <DeviceType> Switch,NAS etc </DeviceType>
+                                                <Status>on/off/brownout</Status>
+                                </Device>
+</DeviceList>
+<Cabling>
+# just a big long list of cables
+                <Cable1><End1>x,y</End1>x,y<End2></End2><type>network,power, other thing</type><Colour>red, green, blue etc</Colour></Cable1>
+                <Cable2><End1></End1><End2></End2><type></type><Colour></Colour></Cable2>
+                <Cable2><End1></End1><End2></End2><type></type><Colour></Colour></Cable3>
+</Cabling>
+</rack>
+
+Vlan tagging done where?
+
+<device list>
+<device>
+                <ID><ID>
+                <image></image>
+                <type>switch</type>
+                <description></description>
+                <manufacturer></manufacturer>
+                <portList>
+                                <Port>
+                                   <type>network,power,fibre,video, etc etc </type>
+                                  <location>x,y< /location >
+                                <name>01</name>
+                                <configuration>off, vlans etc  </ configuration >
+                                </Port>
+                                <Port></Port>
+                                <Port></Port>
+                </portList>
+<configuration>
+
+</configuration>
+</device>
+</devicelist>
+
+Layer objects – 
+device body
+              + ports
+                             Cables
+                                           Draggable devices
+
+layer objects unity 2d - Google Search
+
+Group objects so they can be dragged around: 
+Organizing Dynamically Created Objects in Unity Editor - Stack Overflow
+
+Device:
+UPS
+NAS
+Switch
+Core switch
+AT converters
+Tape drive
+KVM
+
+C# string info:
+String Class (System) | Microsoft Learn
+
+
+Unity - Scripting API: Collider2D
+Checking for collision with 2D objects/sprites - Questions & Answers - Unity Discussions
+
+Getting ahead of myself: Ropes
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj52ZyHy8qPAxVcS2wGHUMLNXoQtwJ6BAgOEAI&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-pbwAUolb_o&usg=AOvVaw1iY_N14Rlv-KEURc378tLN&opi=89978449
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj52ZyHy8qPAxVcS2wGHUMLNXoQtwJ6BAgiEAI&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D_6Jq1wliUVQ&usg=AOvVaw3_Y7-usnZGIG59ORZASfMD&opi=89978449
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj52ZyHy8qPAxVcS2wGHUMLNXoQtwJ6BAgjEAI&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbxG3XP4MVzk&usg=AOvVaw0McgzzmqDNidczlcmO1XAo&opi=89978449
+
+“Features” for Wirecutter game
+
+** Configuring the equipment:
+              Turning off/on ports
+              Vlans on ports
+              Connect cable to management
+              USB with configuration
+             GUI config
+              Command line config
+
+** Text messaging
+              Display text
+              Send text messages (timer or event driven? Both?)
+              Reply to messages (canned responses, free text?)
+              
+** Graphics (pixel art?)
+              Panels
+              Lights
+              Etc for devices 
+              Phone text
+“Features” for Wirecutter game
+*** Basic Cable (ends)
+Drag and drop wire ends.
+Click and move them somewhere else.
+Have them snap to a location.
+Change state when they are dropped (colour change/light goes on type thing)
+Connecting when two ends are plugged.
+Change image when cable end is over a port
+
+*** Basic Devices
+Drag and drop whole devices (groups of ports).
+Unplug all cables first (incl power).
+Power on/off – not work if not plugged in.
+
+*** Cables
+Ropes – connect cable ends with physics
+Collisons with other objects:
+Self
+Other cables
+Racks / cable racks
+
+https://www.google.com/search?sca_esv=ad3bfb9a4481301e&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZud1z6kQpMfoEdCJxnpm_3WBcADgXS0kQ7L92bqYkFCGs4piG0mmPDgZFV1TtUMvZh4b_hOslSO4BbJRk_Rm0ey3utATCo9AA0YQ0p5glWWW0HpU8DVedE3rtYIbOkwQDkvshE3Z7iyZQ8WWFe5CKlq_52Pc-OR_UJrInGb5YajZ1QNK3-xzbdfVo3HbOXpUVaiLvtg&q=configuring+cisco+switch&sa=X&ved=2ahUKEwipr-n5jcCPAxXH8qACHemJBkcQtKgLegQIFRAB&biw=1912&bih=1044&dpr=1
 
 
 
