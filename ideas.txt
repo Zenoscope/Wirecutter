@@ -1,0 +1,51 @@
+Cable ends
+
+public var Connected
+Location x
+Location y
+Port
+Device
+CableID
+
+On mouse release
+  
+If (switch.port && switch.port_empty)
+  Set location to port location
+  If (self.end(other end).connected
+    Switch.port.active = true
+
+Else
+ Go floppy/hover/whatever?
+ Switch.port.active = false
+
+
+Device
+
+Get_device_soft_configuration
+Get_device_hard_configuration
+
+Packet
+
+ If port.active && port_enabled 
+   Change_image (enabled)
+ Else change_image (disabled)
+
+Send_message(port,vlan)
+   If port.active && port_enabled && vlan
+     Out.packet = packet
+
+Receive_message(port,vlan)
+  If port.active && port_enabled && vlan
+   Packet = in.packet
+
+Routing tables
+Packets have destination ip, vlan, (message)
+
+
+Port image:
+Disconnected
+Connected + data
+Connected + no data
+
+
+
