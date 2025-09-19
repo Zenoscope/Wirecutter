@@ -1,51 +1,78 @@
-// Drag and drop - get it working
-// Get the name of the object the dragged item is over.
-// https://u3ds.blogspot.com/2023/07/drag-drop-2d-world-space-2d-objects-c.html
-
-
 using UnityEngine;
- 
-public class DragDrop2D : MonoBehaviour
+using UnityEngine.InputSystem;  // new input system namespace (optional if set to "Both")
+
+// Put this component on your enemy prefabs / objects
+// adds and removes 
+/*
+public class EnemyController : MonoBehaviour
 {
-    Vector3 offset;
-    Collider2D collider2d;
-    public string destinationTag = "DropArea";
- 
-    void Awake()
+    // every instance registers to and removes itself from here
+    private static readonly HashSet<EnemyController> _instances = new HashSet<EnemyController>();
+
+    // Readonly property, I would return a new HashSet so nobody on the outside can alter the content
+    public static HashSet<EnemyController> Instances => new HashSet<EnemyController>(_instances);
+
+    // If possible already drag the Rigidbody into this slot via the Inspector!
+    [SerializedField] private Rigidbody2D rb;
+
+    // public read-only access
+    public Rigidbody2D Rb => rb;
+
+    private void Awake()
     {
-        collider2d = GetComponent<Collider2D>();
+        if (!rb) rb = GetComponent<Rigidbody2D>();
+        _instances.Add(this);
     }
- 
+
+
+    private void OnDestroy()
+    {
+        _instances.Remove(this);
+    }
+}
+*/
+
+
+
+public class DragAndDrop : MonoBehaviour
+{
+    private Vector3 offset;
+
     void OnMouseDown()
     {
+        Debug.Log("OnMouseDown called on " + gameObject.name);
         offset = transform.position - MouseWorldPosition();
     }
- 
+
     void OnMouseDrag()
     {
+        Debug.Log("OnMouseDrag called on " + gameObject.name);
         transform.position = MouseWorldPosition() + offset;
     }
- 
+
     void OnMouseUp()
     {
-        collider2d.enabled = false;
-        var rayOrigin = Camera.main.transform.position;
-        var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        RaycastHit2D hitInfo;
-        if (hitInfo = Physics2D.Raycast(rayOrigin, rayDirection))
-        {
-            if (hitInfo.transform.tag == destinationTag)
-            {
-                transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
-            }
-        }
-        collider2d.enabled = true;
+
     }
- 
-    Vector3 MouseWorldPosition()
+
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        var mouseScreenPos = Input.mousePosition;
-        mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
-        return Camera.main.ScreenToWorldPoint(mouseScreenPos);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with an enemy!");
+            // Perform actions like reducing health, playing sound, etc.
+        }
+    }
+
+    private Vector3 MouseWorldPosition()
+    {
+        // If using new Input System only:
+        Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
+
+        // If set to "Both", you could use Input.mousePosition instead.
+        // var mouseScreenPos = Input.mousePosition;
+
+        float z = Camera.main.WorldToScreenPoint(transform.position).z;
+        return Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPos.x, mouseScreenPos.y, z));
     }
 }
