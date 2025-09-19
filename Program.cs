@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;  // new input system namespace (optional if set to "Both")
 
 // Put this component on your enemy prefabs / objects
-// adds and removes 
+// adds and removes from a list of objects.
 /*
 public class EnemyController : MonoBehaviour
 {
