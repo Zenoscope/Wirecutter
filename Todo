@@ -1,0 +1,7 @@
+To do
+Cable ends snap to location when dropped
+Change state of the port when dropped (so new port script)
+  Change to connected
+  If two ends of the cable are connected, then transport data
+
+
