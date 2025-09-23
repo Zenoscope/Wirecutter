@@ -28,6 +28,12 @@ RJ45
 Power
 */
 
+/* 
+to do:
+Add getters and setters
+*/
+
+
 public class cable_end : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
