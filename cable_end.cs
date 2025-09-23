@@ -1,9 +1,4 @@
-// constructor class for cables.
-
-using System.Runtime.CompilerServices;
-
-// if the cable is CompilerMarshalOverride, check to see what the ennd is over
-// tell the switch that the cable has been plugged in.
+using UnityEngine;
 
 /* cables have properties:
 length
@@ -33,43 +28,30 @@ RJ45
 Power
 */
 
-public var Connected
-Location x
-Location y
-Port
-Device
-CableID
+public class cable_end : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool Movable;
+    public bool Connected; // for checking if it's connected by other things? Needed?
 
-On mouse release
-  
-If (switch.port && switch.port_empty)
-  Set location to port location
-  If (self.end(other end).connected
-    Switch.port.active = true
+    /*
+    Location x
+    Location y
+    Port
+    Device
+    CableID
+    */
 
-Else
- Go floppy/hover/whatever?
- Switch.port.active = false
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Movable = true;
+    }
 
 
-Device
+    // Update is called once per frame
+    void Update()
+    {
 
-Get_device_soft_configuration
-Get_device_hard_configuration
-
-Packet
-
- If port.active && port_enabled 
-   Change_image (enabled)
- Else change_image (disabled)
-
-Send_message(port,vlan)
-   If port.active && port_enabled && vlan
-     Out.packet = packet
-
-Receive_message(port,vlan)
-  If port.active && port_enabled && vlan
-   Packet = in.packet
-
-Routing tables
-Packets have destination ip, vlan, (message)
+    }
+}
